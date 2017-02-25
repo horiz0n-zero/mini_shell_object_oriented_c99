@@ -6,7 +6,7 @@
 /*   By: afeuerst <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/25 16:00:37 by afeuerst          #+#    #+#             */
-/*   Updated: 2017/02/25 23:24:23 by afeuerst         ###   ########.fr       */
+/*   Updated: 2017/02/25 23:32:29 by afeuerst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static const struct s_class	g_desc_cmd =
 {
-	sizeof(struct s_class), ft_ctor, ft_dtor
+	sizeof(struct s_cmd), ft_ctor, ft_dtor
 };
 
 static const void * const	g_ptr_cmd = &g_desc_cmd;
