@@ -26,6 +26,7 @@ static char			**ft_from_npath(const size_t n, const char *path)
 	while ((tmp = readdir(rep)))
 		*ptr++ = ft_copy(tmp->d_name);
 	*ptr = NULL;
+	closedir(rep);
 	return (tab);
 }
 
@@ -48,7 +49,7 @@ static char			**ft_from_path(const char *path)
 
 static char			**ft_data(char **path)
 {
-	
+
 	return (NULL);
 }
 
@@ -60,7 +61,7 @@ char				**ft_path_data(void)
 	data = getenv("PATH");
 	if (data == NULL)
 		return (NULL);
-	path = ft_strsplit(data, ':');
+	path = ft_strsplit(data, ft_isdoublepoint);
 	if (path == NULL)
 		return (NULL);
 	return (ft_data(path));

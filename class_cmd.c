@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "shell.h"
-#include <stdio.h>
+
 static char						*ft_ccopy(const char *str)
 {
 	char						*s;
@@ -39,7 +39,7 @@ void							*ft_ctor(const void * const self, ...)
 	new = malloc(sizeof(struct s_cmd));
 	new->__class = self;
 	new->copy = ft_ccopy(buffer);
-	new->args = ft_strsplit(buffer, ' ');
+	new->args = ft_strsplit(buffer, ft_isspace);
 	new->last = va_arg(args, void*);
 	new->next = NULL;
 	return (new);
@@ -50,8 +50,8 @@ void							ft_dtor(void * const self)
 	struct s_cmd				*cmd;
 
 	cmd = (struct s_cmd*)self;
-	while (*cmd->args)
-		free(*cmd->args++);
+	//while (*cmd->args)
+		//free(*cmd->args++);
 	free(cmd->copy);
 	free(self);
 }

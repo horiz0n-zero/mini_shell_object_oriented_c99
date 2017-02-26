@@ -21,10 +21,8 @@ static const void * const	g_ptr_cmd = &g_desc_cmd;
 
 static void					ft_launch_command(const char *buffer, t_cmd **cmds)
 {
-	if (*cmds == NULL)
-		*cmds = (*(t_class*)g_ptr_cmd).ctor(g_ptr_cmd, buffer, NULL);
-	else
-		*cmds = (*(t_class*)g_ptr_cmd).ctor(g_ptr_cmd, buffer, *cmds);
+	*cmds = (*(t_class*)g_ptr_cmd).ctor(g_ptr_cmd, buffer, *cmds);
+	ft_start_command(*cmds);
 }
 
 int							main(void)
