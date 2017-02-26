@@ -6,7 +6,7 @@
 /*   By: afeuerst <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/25 15:57:08 by afeuerst          #+#    #+#             */
-/*   Updated: 2017/02/25 23:03:57 by afeuerst         ###   ########.fr       */
+/*   Updated: 2017/02/26 17:40:30 by afeuerst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stdarg.h>
 # include <dirent.h>
 # include <errno.h>
+# include <fcntl.h>
 
 // a supr :
 #include <string.h>
@@ -44,6 +45,7 @@ void			ft_dtor(void * const self);
 
 # define clear write(1, "\e[0;0H\e[2J\e[37m$>", sizeof("\e[0;0H\e[2J\e[37m$>"));
 # define enter_mode write(1, "\e[37m$>", sizeof("\e[37m$>"));
+# define wwrite(fd, str) write(fd, str, sizeof(str));
 
 /* fonctions d'execution */
 void ft_start_command(const t_cmd * const cmd);
@@ -63,12 +65,29 @@ char			**ft_strsplit(char *s, int (*f)(int));
 int ft_isspace(const int c);
 int ft_isdoublepoint(const int c);
 
+/** builtins : **/
+uint32_t		ft_builtins(const t_cmd * const cmd);
+void			ft_shell(const t_cmd * const cmd);
+void			ft_echo(const t_cmd * const cmd);
+void			ft_cd(const t_cmd * const cmd);
+
+/*** *** GESTION des ERREURS *** ***/
+
+typedef enum	e_error
+{
+	global = 0,
+}				t_error;
+
+/**                               **/
+
 /* mem functions in utility : */
 void			ft_memset_ll(void * const ptr, const uint64_t val, size_t len);
 void			ft_memset(void * const ptr, const uint8_t val, size_t len);
-
+char			*ft_stc_pluslash(const char *str);
 /* string functions form utility */
 size_t			ft_strlen(const char *str);
 char			*ft_stc_strjoin(const char *s1, const char *s2);
 char			*ft_copy(const char *str);
+int				ft_strcmp(const char *s1, const char *s2);
+int				ft_strncmp(const char *s1, const char *s2, size_t len);
 #endif

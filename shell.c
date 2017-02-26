@@ -6,7 +6,7 @@
 /*   By: afeuerst <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/25 16:00:37 by afeuerst          #+#    #+#             */
-/*   Updated: 2017/02/25 23:32:29 by afeuerst         ###   ########.fr       */
+/*   Updated: 2017/02/26 17:09:08 by afeuerst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ static const void * const	g_ptr_cmd = &g_desc_cmd;
 static void					ft_launch_command(const char *buffer, t_cmd **cmds)
 {
 	*cmds = (*(t_class*)g_ptr_cmd).ctor(g_ptr_cmd, buffer, *cmds);
-	ft_start_command(*cmds);
+	if (ft_builtins(*cmds))
+		ft_start_command(*cmds);
 }
 
 int							main(void)
@@ -51,6 +52,7 @@ int							main(void)
 			}
 			else
 				ptr++;
+			ret = 0;
 		}
 	}
 }

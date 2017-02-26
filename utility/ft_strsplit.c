@@ -6,52 +6,59 @@
 /*   By: afeuerst <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/08 20:43:56 by afeuerst          #+#    #+#             */
-/*   Updated: 2017/02/25 20:37:59 by afeuerst         ###   ########.fr       */
+/*   Updated: 2017/02/26 14:43:34 by afeuerst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-size_t	ft_count(const char *str, int (*f)(int))
+static size_t		ft_count(const char *str, int (*f)(int))
 {
-	size_t	count;
+	size_t			count;
 
-	count = 0;
+	count = 1;
 	while (*str)
 	{
 		if (f(*str))
-			while (f(*str))
+		{
+			while (*str && f(*str))
 				str++;
-		if (*str == '\0')
-			break ;
-		count++;
-		while (*str && !f(*str))
-			str++;
+		}
+		else
+		{
+			while (*str && !f(*str))
+				str++;
+			count++;
+		}
 	}
 	return (count);
 }
 
-char	**ft_strsplit(char *str, int (*f)(int))
+char				**ft_strsplit(char *str, int (*f)(int))
 {
-	char	**tab;
-	char	**ptr;
+	char			**ptr;
+	char			**tab;
 
-	tab = malloc(sizeof(char*) * (ft_count(str, f) + 1));
+	tab = NULL;
+	ptr = NULL;
+	tab = malloc(sizeof(char*) * (ft_count(str, f)));
 	ptr = tab;
+	if (ptr == NULL || tab == NULL)
+		return (NULL);
 	while (*str)
 	{
-		if (*str && !f(*str))
+		if (f(*str))
 		{
-			*tab = str;
+			while (*str && f(*str))
+				*str++ = 0;
+		}
+		else
+		{
+			*ptr++ = str;
 			while (*str && !f(*str))
 				str++;
-			*str++ = 0;
-			tab++;
 		}
-		if (*str && f((int)*str))
-			while (*str && f(*str))
-				*str++ = '\0';
 	}
-	*tab = NULL;
-	return (ptr);
+	*ptr = NULL;
+	return (tab);
 }
