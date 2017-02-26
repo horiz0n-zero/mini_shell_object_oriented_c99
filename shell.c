@@ -6,7 +6,7 @@
 /*   By: afeuerst <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/25 16:00:37 by afeuerst          #+#    #+#             */
-/*   Updated: 2017/02/26 17:09:08 by afeuerst         ###   ########.fr       */
+/*   Updated: 2017/02/26 18:56:07 by afeuerst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int							main(void)
 	ptr = buffer;
 	ft_memset(buffer, 0, 5000);
 	clear
+	ft_init();
 	while (1 | (ret = read(1, ptr, 1)))
 	{
 		if (ret)

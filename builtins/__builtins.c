@@ -6,7 +6,7 @@
 /*   By: afeuerst <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/26 15:23:20 by afeuerst          #+#    #+#             */
-/*   Updated: 2017/02/26 17:54:35 by afeuerst         ###   ########.fr       */
+/*   Updated: 2017/02/26 18:50:22 by afeuerst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,26 @@ static void				ft_local_exe(const t_cmd * const cmd)
 		wait(NULL);
 }
 
+static uint32_t			ft_builtins_(const t_cmd * const cmd)
+{
+	if (!ft_strncmp(*cmd->args, "env", 3))
+	{
+		ft_env();
+		return (0);
+	}
+	else if (!ft_strncmp(*cmd->args, "unsetenv", 8))
+	{
+		ft_unsetenv(cmd);
+		return (0);
+	}
+	else if (!ft_strncmp(*cmd->args, "setenv", 8))
+	{
+		ft_setenv(cmd);
+		return (0);
+	}
+	return (1);
+}
+
 uint32_t				ft_builtins(const t_cmd * const cmd)
 {
 	if (!ft_strncmp(*cmd->args, "echo", 4))
@@ -59,5 +79,7 @@ uint32_t				ft_builtins(const t_cmd * const cmd)
 		ft_shell(cmd);
 		return (0);
 	}
+	else
+		return (ft_builtins_(cmd));
 	return (1);
 }

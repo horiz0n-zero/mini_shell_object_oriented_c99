@@ -6,7 +6,7 @@
 /*   By: afeuerst <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/25 15:57:08 by afeuerst          #+#    #+#             */
-/*   Updated: 2017/02/26 17:40:30 by afeuerst         ###   ########.fr       */
+/*   Updated: 2017/02/26 18:54:32 by afeuerst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,17 @@ char			**ft_strsplit(char *s, int (*f)(int));
 int ft_isspace(const int c);
 int ft_isdoublepoint(const int c);
 
+
+/* INITIALISATON : */
+void			ft_init(void);
 /** builtins : **/
 uint32_t		ft_builtins(const t_cmd * const cmd);
 void			ft_shell(const t_cmd * const cmd);
 void			ft_echo(const t_cmd * const cmd);
 void			ft_cd(const t_cmd * const cmd);
-
+void			ft_env(void);
+void			ft_unsetenv(const t_cmd * const cmd);
+void			ft_setenv(const t_cmd * const cmd);
 /*** *** GESTION des ERREURS *** ***/
 
 typedef enum	e_error
