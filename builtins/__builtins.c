@@ -6,7 +6,7 @@
 /*   By: afeuerst <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/26 15:23:20 by afeuerst          #+#    #+#             */
-/*   Updated: 2017/02/27 17:28:41 by afeuerst         ###   ########.fr       */
+/*   Updated: 2017/02/27 19:32:11 by afeuerst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ static void				ft_local_exe(const t_cmd * const cmd)
 {
 	pid_t				pid;
 	extern char			**environ;
+	int					status;
 
 	pid = fork();
 	if (pid == 0)
@@ -47,7 +48,9 @@ static void				ft_local_exe(const t_cmd * const cmd)
 		exit(1);
 	}
 	else
-		wait(NULL);
+		waitpid(pid, &status, 0);
+	if (status)
+		ft_signal(status, pid, *cmd->args);
 }
 
 static uint32_t			ft_builtins_(const t_cmd * const cmd)

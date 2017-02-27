@@ -6,7 +6,7 @@
 /*   By: afeuerst <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/25 15:57:08 by afeuerst          #+#    #+#             */
-/*   Updated: 2017/02/27 17:46:49 by afeuerst         ###   ########.fr       */
+/*   Updated: 2017/02/27 19:03:02 by afeuerst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,10 @@ void			ft_dtor(void * const self);
 # define wwrite(fd, str) write(fd, str, sizeof(str));
 # define join(s1, s2) ft_stc_strjoin(s1, s2)
 # define opath g_info.o_path
+
 /* SIGNAUX */
 void			ft_init_signal(void);
+void			ft_signal(const int, const pid_t, const char*);
 typedef struct	s_info
 {
 	char		restricted;
