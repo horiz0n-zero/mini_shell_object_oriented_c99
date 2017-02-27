@@ -6,7 +6,7 @@
 /*   By: afeuerst <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/26 18:42:08 by afeuerst          #+#    #+#             */
-/*   Updated: 2017/02/26 18:44:44 by afeuerst         ###   ########.fr       */
+/*   Updated: 2017/02/27 15:35:17 by afeuerst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,7 @@ void				ft_env(const t_cmd * const cmd)
 		ft_print();
 	else if (!ft_strncmp(cmd->args[1], "-i", 3))
 		ft_remove_env();
+	else if (!ft_strncmp(cmd->args[1], "-save", 5))
+		ft_create_env();
+	ft_typeofpath(NULL, NULL, 42);
 }

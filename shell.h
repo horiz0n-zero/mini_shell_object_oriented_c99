@@ -6,7 +6,7 @@
 /*   By: afeuerst <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/25 15:57:08 by afeuerst          #+#    #+#             */
-/*   Updated: 2017/02/26 18:54:32 by afeuerst         ###   ########.fr       */
+/*   Updated: 2017/02/27 17:46:49 by afeuerst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,7 @@
 # include <dirent.h>
 # include <errno.h>
 # include <fcntl.h>
-
-// a supr :
-#include <string.h>
-#include <stdio.h>
+# include <signal.h>
 
 typedef struct	s_class
 {
@@ -46,23 +43,36 @@ void			ft_dtor(void * const self);
 # define clear write(1, "\e[0;0H\e[2J\e[37m$>", sizeof("\e[0;0H\e[2J\e[37m$>"));
 # define enter_mode write(1, "\e[37m$>", sizeof("\e[37m$>"));
 # define wwrite(fd, str) write(fd, str, sizeof(str));
-
+# define join(s1, s2) ft_stc_strjoin(s1, s2)
+# define opath g_info.o_path
+/* SIGNAUX */
+void			ft_init_signal(void);
+typedef struct	s_info
+{
+	char		restricted;
+	char		*o_path;
+}				t_info;
+/* fin SIGNAUX */
+extern t_info	g_info;
 /* fonctions d'execution */
 void ft_start_command(const t_cmd * const cmd);
-
+int64_t			ft_typeofpath(const char *bin_path, char **dst, const int i);
+// si i = 0, la fonction s'excute normalement
+// si i = 42, relancer la recherche des binaires
+// si i = 1, renvoyer le pointeur sur s_board * sous forme uint64_t
 /* fonctions d'environement */
-typedef struct s_board
+typedef struct	s_board
 {
-	char				*path;
-	char				**content;
-	struct s_board *next;
-}							t_board;
-t_board *ft_get_bin_board(void); // recupere tout les binares indiquer par le path
+	char		*path;
+	char		**content;
+	struct s_board	*next;
+}				t_board;
+t_board		*ft_get_bin_board(void);
 
 char		*ft_env_for_key(const char *key);
 void		ft_save_env(void);
-size_t  ft_env_count(void);
-
+size_t		ft_env_count(void);
+void		ft_create_env(void);
 char			**ft_strsplit(char *s, int (*f)(int));
 int ft_isspace(const int c);
 int ft_isdoublepoint(const int c);
@@ -79,12 +89,13 @@ void			ft_env(const t_cmd * const cmd);
 void			ft_unsetenv(const t_cmd * const cmd);
 void			ft_setenv(const t_cmd * const cmd);
 /*** *** GESTION des ERREURS *** ***/
+void			ft_change_key_for_value(const char *key, const char *value);
 
 typedef enum	e_error
 {
 	global = 0,
 }				t_error;
-
+void			ft_error(const enum e_error error);
 /**                               **/
 // fx :
 typedef enum e_fx

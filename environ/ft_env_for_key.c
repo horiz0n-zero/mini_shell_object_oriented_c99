@@ -26,7 +26,7 @@ char		*ft_env_for_key(const char *key)
 	while (*ptr)
 	{
 		if (ft_compare_key(*ptr, key))
-			return ((*ptr + strlen(key) + 1));
+			return ((*ptr + ft_strlen(key) + 1));
 		ptr++;
 	}
 	return(NULL);

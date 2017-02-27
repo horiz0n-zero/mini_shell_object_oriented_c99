@@ -6,13 +6,13 @@
 /*   By: afeuerst <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/26 18:57:08 by afeuerst          #+#    #+#             */
-/*   Updated: 2017/02/26 19:08:52 by afeuerst         ###   ########.fr       */
+/*   Updated: 2017/02/27 15:34:29 by afeuerst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-static void		ft_create_env(void)
+void		ft_create_env(void)
 {
 	extern char	**environ;
 	char		**ptr;

@@ -6,18 +6,18 @@
 /*   By: afeuerst <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/26 18:50:56 by afeuerst          #+#    #+#             */
-/*   Updated: 2017/02/26 18:51:24 by afeuerst         ###   ########.fr       */
+/*   Updated: 2017/02/27 15:33:02 by afeuerst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-static void ft_remove_value(const char *key)
+static void		ft_remove_value(const char *key)
 {
-	extern char **environ;
-	char        **ptr;
-	char        **new;
-	char        **new_ptr;
+	extern char	**environ;
+	char		**ptr;
+	char		**new;
+	char		**new_ptr;
 
 	ptr = environ;
 	new = malloc(sizeof(char*) * ft_env_count());
@@ -48,4 +48,5 @@ void			ft_unsetenv(const t_cmd * const cmd)
 		wwrite(1, "\e[31munsetenv : reference not found in env, nothing done.\e[37m\n")
 	else
 		ft_remove_value(cmd->args[1]);
+	ft_typeofpath(NULL, NULL, 42);
 }

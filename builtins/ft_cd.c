@@ -6,7 +6,7 @@
 /*   By: afeuerst <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/26 15:28:19 by afeuerst          #+#    #+#             */
-/*   Updated: 2017/02/26 16:56:45 by afeuerst         ###   ########.fr       */
+/*   Updated: 2017/02/27 13:56:32 by afeuerst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,10 @@ static void	ft_go_home(void)
 
 	user = ft_env_for_key("USER");
 	if (user == NULL)
+	{
+		wwrite(1, "\e[32mUSER undefined, nothing to be done.\n\e[37m")
 		return ;
+	}
 	chdir(ft_cd_join("/Users/", user));
 }
 
@@ -62,4 +65,6 @@ void		ft_cd(const t_cmd * const cmd)
 			write(1, "cd : no such file or directory\n",
 				sizeof("cd : no such file or directory\n"));
 	}
+	if (ft_env_for_key("PWD") && getcwd(buffer, 8096))
+		ft_change_key_for_value("PWD", buffer);
 }

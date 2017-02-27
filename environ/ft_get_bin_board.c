@@ -6,7 +6,7 @@
 /*   By: afeuerst <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/26 12:53:18 by afeuerst          #+#    #+#             */
-/*   Updated: 2017/02/26 12:56:23 by afeuerst         ###   ########.fr       */
+/*   Updated: 2017/02/27 14:59:39 by afeuerst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ static char			**ft_from_npath(const size_t n, const char *path)
 	rep = opendir(path);
 	tab = malloc(sizeof(char*) * (n + 1));
 	ptr = tab;
+	if (tab == NULL || path == NULL)
+		return (NULL);
 	while ((tmp = readdir(rep)))
 	{
 		if (*tmp->d_name == '.' || tmp->d_type != DT_REG)
@@ -42,6 +44,8 @@ static char			**ft_from_path(const char *path)
 
 	tmp = NULL;
 	count = 0;
+	if (path == NULL)
+		return (NULL);
 	rep = opendir(path);
 	if (rep == NULL)
 		return (NULL);
@@ -77,7 +81,7 @@ t_board				*ft_get_bin_board(void)
 	if (path == NULL || *path == 0)
 		return (NULL);
 	split_path = ft_strsplit(ft_copy(path), ft_isdoublepoint);
-	if (split_path == NULL)
+	if (split_path == NULL || *split_path == NULL)
 		return (NULL);
 	board = ft_new();
 	first = board;

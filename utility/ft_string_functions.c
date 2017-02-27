@@ -6,7 +6,7 @@
 /*   By: afeuerst <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/25 16:11:52 by afeuerst          #+#    #+#             */
-/*   Updated: 2017/02/26 14:07:31 by afeuerst         ###   ########.fr       */
+/*   Updated: 2017/02/27 13:20:26 by afeuerst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int				ft_strncmp(const char *s1, const char *s2, size_t len)
 {
 	size_t	i;
 
+	if (s1 == NULL || s2 == NULL)
+		return (1);
 	i = 0;
 	while ((s2[i] || s1[i]) && (len > i))
 	{
@@ -60,6 +62,8 @@ size_t			ft_strlen(const char *str)
 {
 	size_t		len;
 
+	if (str == NULL)
+		return (0);
 	len = 0;
 	while (*str)
 	{
