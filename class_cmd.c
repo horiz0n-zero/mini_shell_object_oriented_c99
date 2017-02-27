@@ -17,6 +17,8 @@ static char						*ft_ccopy(const char *str)
 	char						*s;
 	char						*ptr;
 
+	if (str == NULL)
+		return (NULL);
 	s = malloc(ft_strlen(str) + 1);
 	ptr = s;
 	while (*str)

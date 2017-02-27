@@ -60,6 +60,8 @@ typedef struct s_board
 t_board *ft_get_bin_board(void); // recupere tout les binares indiquer par le path
 
 char		*ft_env_for_key(const char *key);
+void		ft_save_env(void);
+size_t  ft_env_count(void);
 
 char			**ft_strsplit(char *s, int (*f)(int));
 int ft_isspace(const int c);
@@ -73,7 +75,7 @@ uint32_t		ft_builtins(const t_cmd * const cmd);
 void			ft_shell(const t_cmd * const cmd);
 void			ft_echo(const t_cmd * const cmd);
 void			ft_cd(const t_cmd * const cmd);
-void			ft_env(void);
+void			ft_env(const t_cmd * const cmd);
 void			ft_unsetenv(const t_cmd * const cmd);
 void			ft_setenv(const t_cmd * const cmd);
 /*** *** GESTION des ERREURS *** ***/
@@ -84,7 +86,19 @@ typedef enum	e_error
 }				t_error;
 
 /**                               **/
-
+// fx :
+typedef enum e_fx
+{
+	click_start,
+	click_stop,
+	bip,
+	init,
+	long_button,
+	short_button,
+	stop,
+	zzz
+}						t_fx;
+void ft_fx(const enum e_fx fx);
 /* mem functions in utility : */
 void			ft_memset_ll(void * const ptr, const uint64_t val, size_t len);
 void			ft_memset(void * const ptr, const uint8_t val, size_t len);

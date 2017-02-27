@@ -71,11 +71,15 @@ t_board				*ft_get_bin_board(void)
 	t_board			*board;
 	t_board			*first;
 	char			**split_path;
+	char      *path;
 
-	split_path = ft_strsplit(ft_copy(ft_env_for_key("PATH")), ft_isdoublepoint);
-	board = ft_new();
-	if (board == NULL || split_path == NULL)
+	path = ft_env_for_key("PATH");
+	if (path == NULL || *path == 0)
 		return (NULL);
+	split_path = ft_strsplit(ft_copy(path), ft_isdoublepoint);
+	if (split_path == NULL)
+		return (NULL);
+	board = ft_new();
 	first = board;
 	while (*split_path)
 	{

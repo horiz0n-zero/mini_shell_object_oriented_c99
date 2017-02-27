@@ -12,10 +12,18 @@
 
 #include "shell.h"
 
-void				ft_env(void)
+static void ft_remove_env(void)
+{
+	extern char **environ;
+
+	while (*environ)
+		free(*environ++);
+}
+
+static void ft_print(void)
 {
 	extern char		**environ;
-	char			**ptr;
+	char			    **ptr;
 
 	ptr = environ;
 	while (*ptr)
@@ -24,4 +32,12 @@ void				ft_env(void)
 		write(1, "\n", 1);
 		ptr++;
 	}
+}
+
+void				ft_env(const t_cmd * const cmd)
+{
+	if (cmd->args[1] == NULL)
+		ft_print();
+	else if (!ft_strncmp(cmd->args[1], "-i", 3))
+		ft_remove_env();
 }

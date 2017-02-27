@@ -14,5 +14,5 @@
 
 void			ft_init(void)
 {
-	extern char	**environ;
+	ft_save_env();
 }

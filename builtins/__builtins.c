@@ -28,7 +28,7 @@ static void				ft_local_exe(const t_cmd * const cmd)
 	{
 		execve(*cmd->args, cmd->args, environ);
 		write(1, *cmd->args, ft_strlen(*cmd->args));
-		wwrite(1, " No such file or directory\n")
+		wwrite(1, ": No such file or directory\n")
 		exit(1);
 	}
 	else
@@ -39,7 +39,7 @@ static uint32_t			ft_builtins_(const t_cmd * const cmd)
 {
 	if (!ft_strncmp(*cmd->args, "env", 3))
 	{
-		ft_env();
+		ft_env(cmd);
 		return (0);
 	}
 	else if (!ft_strncmp(*cmd->args, "unsetenv", 8))
@@ -69,7 +69,7 @@ uint32_t				ft_builtins(const t_cmd * const cmd)
 	}
 	else if (!ft_strncmp(*cmd->args, "exit", 4))
 		ft_exit_destructor(cmd);
-	else if (!ft_strncmp(cmd->copy, "./", 2) || !ft_strncmp(cmd->copy, "/", 1))
+	else if (!ft_strncmp(cmd->copy, ".", 1) || !ft_strncmp(cmd->copy, "/", 1))
 	{
 		ft_local_exe(cmd);
 		return (0);

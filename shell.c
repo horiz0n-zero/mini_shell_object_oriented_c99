@@ -24,6 +24,8 @@ static void					ft_launch_command(const char *buffer, t_cmd **cmds)
 	*cmds = (*(t_class*)g_ptr_cmd).ctor(g_ptr_cmd, buffer, *cmds);
 	if (ft_builtins(*cmds))
 		ft_start_command(*cmds);
+	//else
+		//ft_fx(long_button);
 }
 
 int							main(void)

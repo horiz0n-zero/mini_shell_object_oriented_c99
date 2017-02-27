@@ -12,66 +12,48 @@
 
 #include "shell.h"
 
-static void		ft_realloc_env__(const char *val, const char *value, size_t n)
+static void ft_realloc_env(const char *key, const char *value)
 {
-	extern char	**environ;
-	char		**ptr;
-	char		**new;
-	char		**s_new;
+	extern char **environ;
+	char        **ptr;
+	char        **new;
+	char        **ptr_new;
 
 	ptr = environ;
-	s_new = malloc(sizeof(char*) * (n + 2));
-	new = s_new;
-	while (*ptr && **ptr)
+	new = malloc(sizeof(char*) * (ft_env_count() + 2));
+	ptr_new = new;
+	while (*ptr)
 	{
-		while (**ptr)
-			**new++ = **ptr++;
-		ptr++;
-		new++;
+		*ptr_new++ = ft_copy(*ptr);
+		free(*ptr++);
 	}
-	environ = s_new;
-	(void)val;
-	(void)value;
+	*ptr = ft_copy(ft_stc_strjoin(key, "="));
+	*ptr_new++ = ft_copy(ft_stc_strjoin(*ptr, value));
+	free(*ptr);
+	*ptr_new = NULL;
+	environ = new;
 }
 
-static void		ft_realloc_env(const char *val, const char *value)
+static void ft_change_key_for_value(const char *key, const char *value)
 {
-	extern char	**environ;
-	char		**ptr;
-	size_t		count;
-
-	count = 0;
-	ptr = environ;
-	while (*ptr && **ptr)
-	{
-		ptr++;
-		count++;
-	}
-	ft_realloc_env__(val, value, count);
-}
-
-static uint32_t	ft_changeif(const char *var, const char *value)
-{
-	extern char	**environ;
-	char		**ptr;
-	char		*copy;
-	char		*tmp;
+	extern char **environ;
+	char        **ptr;
+	char				*tmp;
 
 	tmp = NULL;
-	copy = NULL;
 	ptr = environ;
-	while (*ptr && **ptr)
+	while (*ptr)
 	{
-		if (!ft_strncmp(*ptr, var, ft_strlen(var)))
+		if (!ft_strncmp(key, *ptr, ft_strlen(key)))
 		{
-			tmp = ft_copy(ft_stc_strjoin(var, "="));
-			copy = ft_copy(ft_stc_strjoin(tmp, value));
+			free(*ptr);
+			tmp = ft_copy(ft_stc_strjoin(key, "="));
+			*ptr = ft_copy(ft_stc_strjoin(tmp, value));
 			free(tmp);
-			*ptr = copy;
-			return (1);
+			break ;
 		}
+		ptr++;
 	}
-	return (0);
 }
 
 void			ft_setenv(const t_cmd * const cmd)
@@ -81,8 +63,8 @@ void			ft_setenv(const t_cmd * const cmd)
 		wwrite(1, "\e[93msetenv VAR [VALUE]\e[37m\n")
 		return ;
 	}
-	if (!ft_changeif(cmd->args[1], cmd->args[2]))
-	{
+	if (ft_env_for_key(cmd->args[1]) == NULL)
 		ft_realloc_env(cmd->args[1], cmd->args[2]);
-	}
+	else
+		ft_change_key_for_value(cmd->args[1], cmd->args[2]);
 }

@@ -29,6 +29,7 @@ int32_t				ft_typeofpath(const char *bin_path, char **dst)
 			{
 				*dst = ft_stc_strjoin(ft_stc_pluslash(board->path), board->content[index]);
 				board = save;
+				//ft_fx(short_button);
 				return (1);
 			}
 			else
@@ -53,7 +54,7 @@ static void			ft_launch_command(const t_cmd * const cmd, const char *bin_path)
 		exit(1);
 	}
 	else
-		wait(NULL);
+		waitpid(pid, NULL, 0);
 	// todo : passer a wait pid ** pour utiliser les taches de fonds.
 }
 
@@ -69,11 +70,11 @@ void				ft_start_command(const t_cmd * const cmd)
 		write(1, "\e[31mCommande not found : ", sizeof("\e[31mCommande not found : "));
 		write(1, *cmd->args, ft_strlen(*cmd->args));
 		write(1, "\e[37m\n", sizeof("\e[37m\n"));
-	}
-	else if (!typeof_path)
-	{
-		// builtins maison :-)
+		//ft_fx(stop);
 	}
 	else
-		ft_launch_command(cmd, bin_path);
+	{
+		if (bin_path)
+			ft_launch_command(cmd, bin_path);
+	}
 }
