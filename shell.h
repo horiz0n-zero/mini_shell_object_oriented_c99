@@ -6,7 +6,7 @@
 /*   By: afeuerst <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/25 15:57:08 by afeuerst          #+#    #+#             */
-/*   Updated: 2017/02/27 19:03:02 by afeuerst         ###   ########.fr       */
+/*   Updated: 2017/02/28 15:35:57 by afeuerst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,10 @@ void			ft_dtor(void * const self);
 # define wwrite(fd, str) write(fd, str, sizeof(str));
 # define join(s1, s2) ft_stc_strjoin(s1, s2)
 # define opath g_info.o_path
-
+# define CHAR_MAX_LINE 1000
+/* TERMCAPS */
+void			ft_init_termcaps(void);
+/* ******** */
 /* SIGNAUX */
 void			ft_init_signal(void);
 void			ft_signal(const int, const pid_t, const char*);
@@ -92,6 +95,7 @@ void			ft_cd(const t_cmd * const cmd);
 void			ft_env(const t_cmd * const cmd);
 void			ft_unsetenv(const t_cmd * const cmd);
 void			ft_setenv(const t_cmd * const cmd);
+void			ft_kill(const t_cmd * const cmd);
 /*** *** GESTION des ERREURS *** ***/
 void			ft_change_key_for_value(const char *key, const char *value);
 

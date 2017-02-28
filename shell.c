@@ -6,7 +6,7 @@
 /*   By: afeuerst <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/25 16:00:37 by afeuerst          #+#    #+#             */
-/*   Updated: 2017/02/27 16:07:56 by afeuerst         ###   ########.fr       */
+/*   Updated: 2017/02/28 15:35:44 by afeuerst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,31 +41,23 @@ static void					ft_launch_command(const char *buffer, t_cmd **cmds)
 
 int							main(void)
 {
-	char					buffer[5000];
-	char					*ptr;
+	char					buffer[CHAR_MAX_LINE];
 	int						ret;
 	struct s_cmd			*cmds;
 
 	cmds = NULL;
 	ret = 0;
-	ptr = buffer;
-	ft_memset(buffer, 0, 5000);
+	ft_memset(buffer, 0, CHAR_MAX_LINE);
 	clear
 	ft_init();
-	while (1 | (ret = read(0, ptr, 1)))
+	while (1 | (ret = read(0, buffer, CHAR_MAX_LINE)))
 	{
 		if (ret)
 		{
-			if (*ptr == '\n')
-			{
-				if (ptr != buffer)
-					ft_launch_command(buffer, &cmds);
-				enter_mode
-				ptr = buffer;
-				ft_memset(buffer, 0, 5000);
-			}
-			else
-				ptr++;
+			if ((buffer + --ret) != buffer)
+				ft_launch_command(buffer, &cmds);
+			enter_mode
+			ft_memset(buffer, 0, CHAR_MAX_LINE);
 			ret = 0;
 		}
 	}

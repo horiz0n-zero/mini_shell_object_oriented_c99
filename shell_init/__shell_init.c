@@ -6,19 +6,13 @@
 /*   By: afeuerst <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/26 18:52:51 by afeuerst          #+#    #+#             */
-/*   Updated: 2017/02/27 17:46:22 by afeuerst         ###   ########.fr       */
+/*   Updated: 2017/02/28 13:48:48 by afeuerst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
 t_info					g_info;
-
-void					ft_segfault(int signum)
-{
-	(void)signum;
-	wwrite(1, "\e[32msegfault chouette !\n\e[37m")
-}
 
 void					ft_init(void)
 {
@@ -32,4 +26,5 @@ void					ft_init(void)
 	g_info.restricted = 0;
 	ft_init_signal();
 	ft_save_env();
+	ft_init_termcaps();
 }

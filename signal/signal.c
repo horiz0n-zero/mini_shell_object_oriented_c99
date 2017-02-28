@@ -6,7 +6,7 @@
 /*   By: afeuerst <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 17:30:51 by afeuerst          #+#    #+#             */
-/*   Updated: 2017/02/27 19:47:31 by afeuerst         ###   ########.fr       */
+/*   Updated: 2017/02/28 13:53:17 by afeuerst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ static void			ft_print_signal_(const int signal)
 		wwrite(1, "stop process ")
 	else if (signal == SIGPIPE)
 		wwrite(1, "Broken pipe ")
+	else if (signal == SIGFPE)
+		wwrite(1, "Floating point execption ")
 	else
 		wwrite(1, "Unknow signal ")
 }
