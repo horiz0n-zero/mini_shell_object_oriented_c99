@@ -36,6 +36,7 @@ static void					ft_launch_command(const char *buffer, t_cmd **cmds)
 				wwrite(1, "\e[31mCommand denied\n\e[37m")
 		}
 	}
+	//ft_fx(click_start);
 }
 
 int							main(void)

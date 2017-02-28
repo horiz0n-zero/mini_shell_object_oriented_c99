@@ -54,6 +54,8 @@ static void			ft_print_signal_(const int signal)
 		wwrite(1, "stop process ")
 	else if (signal == SIGPIPE)
 		wwrite(1, "Broken pipe ")
+	else
+		wwrite(1, "Unknow signal ")
 }
 
 static void			ft_print_signal(const int signal)

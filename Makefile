@@ -20,6 +20,7 @@ O_SOURCES = $(C_SOURCES:.c=.o)
 
 PRINTF = printf "\e[94m%-30s  \e[96m-->>  \e[92m%-30s\n" $< $@
 WHITE = printf "\e[37m"
+
 all:
 	printf "\e[34mcompiling Minishell ...\n"
 	make -j $(NAME)

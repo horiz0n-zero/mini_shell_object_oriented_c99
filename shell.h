@@ -21,6 +21,8 @@
 # include <errno.h>
 # include <fcntl.h>
 # include <signal.h>
+# include <termios.h>
+//# include <term.h>
 
 typedef struct	s_class
 {
