@@ -6,7 +6,7 @@
 /*   By: afeuerst <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/26 15:23:20 by afeuerst          #+#    #+#             */
-/*   Updated: 2017/02/28 16:51:18 by afeuerst         ###   ########.fr       */
+/*   Updated: 2017/03/01 13:24:40 by afeuerst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ static uint32_t			ft_not_denied(const char *cmd)
 		return (1);
 }
 
-static void				ft_exit_destructor(const t_cmd *cmd)
+static void				ft_exit(const t_cmd *cmd)
 {
-	(void)cmd;
+	ft_shell_deinit(cmd);
 	exit(0);
 }
 
@@ -97,7 +97,7 @@ uint32_t				ft_builtins(const t_cmd * const cmd)
 	else if (!ft_strncmp(*cmd->args, "exit", 4))
 	{
 		if (ft_not_denied("exit"))
-			ft_exit_destructor(cmd);
+			ft_exit(cmd);
 		else
 			return (0);
 	}

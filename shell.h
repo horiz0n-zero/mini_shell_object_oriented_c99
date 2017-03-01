@@ -6,7 +6,7 @@
 /*   By: afeuerst <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/25 15:57:08 by afeuerst          #+#    #+#             */
-/*   Updated: 2017/02/28 21:27:09 by afeuerst         ###   ########.fr       */
+/*   Updated: 2017/03/01 13:25:28 by afeuerst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ void			ft_env(const t_cmd * const cmd);
 void			ft_unsetenv(const t_cmd * const cmd);
 void			ft_setenv(const t_cmd * const cmd);
 void			ft_kill(const t_cmd * const cmd);
+void			ft_shell_deinit(const t_cmd * cmd);
 /*** *** GESTION des ERREURS *** ***/
 void			ft_change_key_for_value(const char *key, const char *value);
 

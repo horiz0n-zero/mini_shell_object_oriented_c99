@@ -6,7 +6,7 @@
 /*   By: afeuerst <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/25 20:17:44 by afeuerst          #+#    #+#             */
-/*   Updated: 2017/02/28 21:27:30 by afeuerst         ###   ########.fr       */
+/*   Updated: 2017/03/01 13:27:43 by afeuerst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,6 @@ static char						*ft_ccopy(const char *str)
 	return (s);
 }
 
-// self == description de la class,
-// le buffer
-// la precedente commande;
 void							*ft_ctor(const void * const self, ...)
 {
 	struct s_cmd				*new;
