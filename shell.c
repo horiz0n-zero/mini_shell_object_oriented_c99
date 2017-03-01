@@ -6,7 +6,7 @@
 /*   By: afeuerst <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/25 16:00:37 by afeuerst          #+#    #+#             */
-/*   Updated: 2017/02/28 15:35:44 by afeuerst         ###   ########.fr       */
+/*   Updated: 2017/03/01 13:15:45 by afeuerst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void					ft_launch_command(const char *buffer, t_cmd **cmds)
 				wwrite(1, "\e[31mCommand denied\n\e[37m")
 		}
 	}
-	//ft_fx(click_start);
+	//ft_fx(click_start)
 }
 
 int							main(void)

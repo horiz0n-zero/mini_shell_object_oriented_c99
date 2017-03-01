@@ -6,7 +6,7 @@
 /*   By: afeuerst <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/25 20:17:44 by afeuerst          #+#    #+#             */
-/*   Updated: 2017/02/27 12:21:10 by afeuerst         ###   ########.fr       */
+/*   Updated: 2017/02/28 21:27:30 by afeuerst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,7 @@ void							ft_dtor(void * const self)
 	struct s_cmd				*cmd;
 
 	cmd = (struct s_cmd*)self;
-	//while (*cmd->args)
-		//free(*cmd->args++);
+	free(*cmd->args);
 	free(cmd->copy);
 	free(self);
 }

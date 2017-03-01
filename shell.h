@@ -6,7 +6,7 @@
 /*   By: afeuerst <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/25 15:57:08 by afeuerst          #+#    #+#             */
-/*   Updated: 2017/02/28 15:35:57 by afeuerst         ###   ########.fr       */
+/*   Updated: 2017/02/28 21:27:09 by afeuerst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ typedef struct	s_cmd
 void			*ft_ctor(const void * const self, ...);
 void			ft_dtor(void * const self);
 
-# define clear write(1, "\e[0;0H\e[2J\e[37m$>", sizeof("\e[0;0H\e[2J\e[37m$>"));
-# define enter_mode write(1, "\e[37m$>", sizeof("\e[37m$>"));
+# define clear write(1, "\e[0;0H\e[2J\e[37m$> ", sizeof("\e[0;0H\e[2J\e[37m$> "));
+# define enter_mode write(1, "\e[37m$> ", sizeof("\e[37m$> "));
 # define wwrite(fd, str) write(fd, str, sizeof(str));
 # define join(s1, s2) ft_stc_strjoin(s1, s2)
 # define opath g_info.o_path
@@ -62,7 +62,7 @@ typedef struct	s_info
 /* fin SIGNAUX */
 extern t_info	g_info;
 /* fonctions d'execution */
-void ft_start_command(const t_cmd * const cmd);
+void			ft_start_command(const t_cmd * const cmd);
 int64_t			ft_typeofpath(const char *bin_path, char **dst, const int i);
 // si i = 0, la fonction s'excute normalement
 // si i = 42, relancer la recherche des binaires
@@ -75,14 +75,14 @@ typedef struct	s_board
 	struct s_board	*next;
 }				t_board;
 t_board		*ft_get_bin_board(void);
-
+void		ft_remove_env_for_key(const char *value);
 char		*ft_env_for_key(const char *key);
 void		ft_save_env(void);
 size_t		ft_env_count(void);
 void		ft_create_env(void);
-char			**ft_strsplit(char *s, int (*f)(int));
-int ft_isspace(const int c);
-int ft_isdoublepoint(const int c);
+char		**ft_strsplit(char *s, int (*f)(int));
+int			ft_isspace(const int c);
+int			ft_isdoublepoint(const int c);
 
 
 /* INITIALISATON : */

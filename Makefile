@@ -6,13 +6,13 @@
 #    By: afeuerst <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/25 16:01:32 by afeuerst          #+#    #+#              #
-#    Updated: 2017/02/27 17:24:53 by afeuerst         ###   ########.fr        #
+#    Updated: 2017/02/28 16:53:20 by afeuerst         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME=shell
 
-FLAGS = -fshort-enums -Wall -Wextra -Werror -O2 
+FLAGS = -fshort-enums -Wall -Wextra -Werror -O2
 #-fsanitize=address -g
 
 C_SOURCES = $(shell find . -type f | grep "\.c")

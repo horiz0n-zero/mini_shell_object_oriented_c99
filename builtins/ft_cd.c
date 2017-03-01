@@ -6,7 +6,7 @@
 /*   By: afeuerst <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/26 15:28:19 by afeuerst          #+#    #+#             */
-/*   Updated: 2017/02/27 13:56:32 by afeuerst         ###   ########.fr       */
+/*   Updated: 2017/02/28 17:41:05 by afeuerst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,7 @@ void		ft_cd(const t_cmd * const cmd)
 	if (chdir(ft_cd_join(buffer, cmd->args[1])) == -1)
 	{
 		if (chdir(cmd->args[1]) == -1)
-			write(1, "cd : no such file or directory\n",
-				sizeof("cd : no such file or directory\n"));
+			wwrite(1, "cd : no such file or directory\n")
 	}
 	if (ft_env_for_key("PWD") && getcwd(buffer, 8096))
 		ft_change_key_for_value("PWD", buffer);

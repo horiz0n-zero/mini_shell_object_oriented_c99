@@ -6,7 +6,7 @@
 /*   By: afeuerst <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/26 15:23:20 by afeuerst          #+#    #+#             */
-/*   Updated: 2017/02/28 14:22:56 by afeuerst         ###   ########.fr       */
+/*   Updated: 2017/02/28 16:51:18 by afeuerst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,11 @@ static uint32_t			ft_builtins_(const t_cmd * const cmd)
 			ft_setenv(cmd);
 		return (0);
 	}
-	else if (!ft_strncmp(*cmd->args, "kill", 5))
+	/*else if (!ft_strncmp(*cmd->args, "kill", 5))
 	{
 		ft_kill(cmd);
 		return (0);
-	}
+	}*/
 	return (1);
 }
 

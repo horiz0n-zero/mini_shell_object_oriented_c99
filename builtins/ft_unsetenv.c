@@ -6,11 +6,21 @@
 /*   By: afeuerst <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/26 18:50:56 by afeuerst          #+#    #+#             */
-/*   Updated: 2017/02/27 15:33:02 by afeuerst         ###   ########.fr       */
+/*   Updated: 2017/02/28 16:26:07 by afeuerst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
+
+static void		ft_remove_value(const char *key);
+
+void			ft_remove_env_for_key(const char *key)
+{
+	if (ft_env_for_key(key) == NULL)
+		wwrite(1, "\e[32mAny env reference found, nothing to be done.\n\e[37m")
+	else
+		ft_remove_value(key);
+}
 
 static void		ft_remove_value(const char *key)
 {

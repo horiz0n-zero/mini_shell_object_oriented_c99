@@ -6,7 +6,7 @@
 /*   By: afeuerst <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/26 13:57:22 by afeuerst          #+#    #+#             */
-/*   Updated: 2017/02/27 19:31:27 by afeuerst         ###   ########.fr       */
+/*   Updated: 2017/02/28 18:07:57 by afeuerst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ int64_t				ft_typeofpath(const char *bin_path, char **dst, const int i)
 	return (-1);
 }
 
-#include <stdio.h>
 static void			ft_launch_command(const t_cmd * const cmd, const char *bin_path)
 {
 	pid_t			pid;
@@ -94,7 +93,7 @@ void				ft_start_command(const t_cmd * const cmd)
 	typeof_path = ft_typeofpath(*cmd->args, &bin_path, 0);
 	if (typeof_path < 0)
 	{
-		write(1, "\e[31mCommande not found : ", sizeof("\e[31mCommande not found : "));
+		wwrite(1, "\e[31m Command not found : ")
 		write(1, *cmd->args, ft_strlen(*cmd->args));
 		write(1, "\e[37m\n", sizeof("\e[37m\n"));
 	}
