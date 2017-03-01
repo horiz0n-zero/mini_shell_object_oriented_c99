@@ -6,7 +6,7 @@
 /*   By: afeuerst <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/26 13:57:22 by afeuerst          #+#    #+#             */
-/*   Updated: 2017/02/28 18:07:57 by afeuerst         ###   ########.fr       */
+/*   Updated: 2017/03/01 19:51:00 by afeuerst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ static int64_t		ft_typeofpath_(t_board **board, t_board **save, const int i)
 {
 	if (i == 42)
 	{
-		// free
 		*board = ft_get_bin_board();
 		*save = *board;
 	}
@@ -30,13 +29,30 @@ static int64_t		ft_typeofpath_(t_board **board, t_board **save, const int i)
 	return (0);
 }
 
+static int			ft_w(t_board **board, t_board **save, char *bin, char **dst)
+{
+	int				i;
+
+	i = 0;
+	while ((*board)->content[i])
+	{
+		if (!ft_strncmp(bin, (*board)->content[i], LEN((*board)->content[i])))
+		{
+			*dst = SJOIN(SLASH((*board)->path), (*board)->content[i]);
+			*board = *save;
+			return (1);
+		}
+		else
+			i++;
+	}
+	return (0);
+}
+
 int64_t				ft_typeofpath(const char *bin_path, char **dst, const int i)
 {
 	static t_board	*board = NULL;
 	static t_board	*save = NULL;
-	uint16_t		index;
 
-	index = 0;
 	if (ft_typeofpath_(&board, &save, i))
 		return ((int64_t)save);
 	while (board)
@@ -44,22 +60,11 @@ int64_t				ft_typeofpath(const char *bin_path, char **dst, const int i)
 		if (board->content == NULL)
 		{
 			board = board->next;
-			index = 0;
 			continue ;
 		}
-		while (board->content[index])
-		{
-			if (!ft_strncmp(bin_path, board->content[index], ft_strlen(board->content[index])))
-			{
-				*dst = ft_stc_strjoin(ft_stc_pluslash(board->path), board->content[index]);
-				board = save;
-				return (1);
-			}
-			else
-				index++;
-		}
+		if (ft_w(&board, &save, (char*)bin_path, dst))
+			return (1);
 		board = board->next;
-		index = 0;
 	}
 	board = save;
 	return (-1);
@@ -93,7 +98,7 @@ void				ft_start_command(const t_cmd * const cmd)
 	typeof_path = ft_typeofpath(*cmd->args, &bin_path, 0);
 	if (typeof_path < 0)
 	{
-		wwrite(1, "\e[31m Command not found : ")
+		WWRITE(1, "\e[31m Command not found : ")
 		write(1, *cmd->args, ft_strlen(*cmd->args));
 		write(1, "\e[37m\n", sizeof("\e[37m\n"));
 	}

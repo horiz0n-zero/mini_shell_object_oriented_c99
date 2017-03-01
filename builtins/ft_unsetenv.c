@@ -6,7 +6,7 @@
 /*   By: afeuerst <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/26 18:50:56 by afeuerst          #+#    #+#             */
-/*   Updated: 2017/02/28 16:26:07 by afeuerst         ###   ########.fr       */
+/*   Updated: 2017/03/01 19:33:22 by afeuerst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void		ft_remove_value(const char *key);
 void			ft_remove_env_for_key(const char *key)
 {
 	if (ft_env_for_key(key) == NULL)
-		wwrite(1, "\e[32mAny env reference found, nothing to be done.\n\e[37m")
+		WWRITE(1, "\e[32mAny env reference found, nothing to be done.\n\e[37m")
 	else
 		ft_remove_value(key);
 }
@@ -51,11 +51,11 @@ void			ft_unsetenv(const t_cmd * const cmd)
 {
 	if (cmd->args[1] == NULL)
 	{
-		wwrite(1, "\e[33musage : unsetenv VAL\n\e[37m")
+		WWRITE(1, "\e[33musage : unsetenv VAL\n\e[37m")
 		return ;
 	}
 	if (ft_env_for_key(cmd->args[1]) == NULL)
-		wwrite(1, "\e[31munsetenv : reference not found in env, nothing done.\e[37m\n")
+		WWRITE(1, "\e[31munsetenv : reference not found in env, nothing done.\e[37m\n")
 	else
 		ft_remove_value(cmd->args[1]);
 	ft_typeofpath(NULL, NULL, 42);

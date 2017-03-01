@@ -6,7 +6,7 @@
 /*   By: afeuerst <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/25 20:17:44 by afeuerst          #+#    #+#             */
-/*   Updated: 2017/03/01 13:27:43 by afeuerst         ###   ########.fr       */
+/*   Updated: 2017/03/01 19:38:18 by afeuerst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void							*ft_ctor(const void * const self, ...)
 	va_start(args, self);
 	buffer = va_arg(args, char*);
 	new = malloc(sizeof(struct s_cmd));
-	new->__class = self;
+	new->class = self;
 	new->copy = ft_ccopy(buffer);
 	new->args = ft_strsplit(buffer, ft_isspace);
 	new->last = va_arg(args, void*);

@@ -6,7 +6,7 @@
 /*   By: afeuerst <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/26 18:52:51 by afeuerst          #+#    #+#             */
-/*   Updated: 2017/02/28 13:48:48 by afeuerst         ###   ########.fr       */
+/*   Updated: 2017/03/01 19:37:05 by afeuerst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void					ft_init(void)
 		g_info.o_path = ft_copy(buffer);
 	else
 		g_info.o_path = NULL;
+	g_info.last_pwd = g_info.o_path;
 	g_info.restricted = 0;
 	ft_init_signal();
 	ft_save_env();

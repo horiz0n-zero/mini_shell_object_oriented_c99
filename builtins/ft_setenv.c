@@ -6,7 +6,7 @@
 /*   By: afeuerst <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/26 18:51:31 by afeuerst          #+#    #+#             */
-/*   Updated: 2017/02/27 15:32:56 by afeuerst         ###   ########.fr       */
+/*   Updated: 2017/03/01 19:33:06 by afeuerst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void			ft_setenv(const t_cmd * const cmd)
 {
 	if (cmd->args[1] == NULL || cmd->args[2] == NULL)
 	{
-		wwrite(1, "\e[93msetenv VAR [VALUE]\e[37m\n")
+		WWRITE(1, "\e[93msetenv VAR [VALUE]\e[37m\n")
 		return ;
 	}
 	if (ft_env_for_key(cmd->args[1]) == NULL)

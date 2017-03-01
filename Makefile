@@ -6,11 +6,11 @@
 #    By: afeuerst <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/25 16:01:32 by afeuerst          #+#    #+#              #
-#    Updated: 2017/02/28 16:53:20 by afeuerst         ###   ########.fr        #
+#    Updated: 2017/03/01 19:26:56 by afeuerst         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME=shell
+NAME=minishell
 
 FLAGS = -fshort-enums -Wall -Wextra -Werror -O2
 #-fsanitize=address -g

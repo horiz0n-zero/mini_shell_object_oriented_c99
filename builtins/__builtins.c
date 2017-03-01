@@ -6,7 +6,7 @@
 /*   By: afeuerst <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/26 15:23:20 by afeuerst          #+#    #+#             */
-/*   Updated: 2017/03/01 13:24:40 by afeuerst         ###   ########.fr       */
+/*   Updated: 2017/03/01 19:31:20 by afeuerst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ static uint32_t			ft_not_denied(const char *cmd)
 
 	if (g_info.restricted)
 	{
-		wwrite(1, "\e[31m")
+		WWRITE(1, "\e[31m")
 		write(1, cmd, ft_strlen(cmd));
-		wwrite(1, " : Command denied\n\e[37m")
+		WWRITE(1, " : Command denied\n\e[37m")
 		return (0);
 	}
 	else
@@ -29,7 +29,8 @@ static uint32_t			ft_not_denied(const char *cmd)
 
 static void				ft_exit(const t_cmd *cmd)
 {
-	ft_shell_deinit(cmd);
+	//ft_shell_deinit(cmd);
+	(void)cmd;
 	exit(0);
 }
 
@@ -44,7 +45,7 @@ static void				ft_local_exe(const t_cmd * const cmd)
 	{
 		execve(*cmd->args, cmd->args, environ);
 		write(1, *cmd->args, ft_strlen(*cmd->args));
-		wwrite(1, ": No such file or directory\n")
+		WWRITE(1, ": Permission denied\n")
 		exit(1);
 	}
 	else

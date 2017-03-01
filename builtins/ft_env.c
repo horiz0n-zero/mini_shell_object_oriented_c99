@@ -6,7 +6,7 @@
 /*   By: afeuerst <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/26 18:42:08 by afeuerst          #+#    #+#             */
-/*   Updated: 2017/02/28 16:36:05 by afeuerst         ###   ########.fr       */
+/*   Updated: 2017/03/01 19:32:32 by afeuerst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static void			ft_usage(void)
 {
-	wwrite(1, "\e[34musage : env\n-i \t\t-- remove the environement\n")
-	wwrite(1, "-u [VALUE] \t-- remove VALUE reference in environement\n")
-	wwrite(1, "-new \t\t-- create a new simple env.\n\e[37m")
+	WWRITE(1, "\e[34musage : env\n-i \t\t-- remove the environement\n")
+	WWRITE(1, "-u [VALUE] \t-- remove VALUE reference in environement\n")
+	WWRITE(1, "-new \t\t-- create a new simple env.\n\e[37m")
 }
 
 static void			ft_remove_env(void)

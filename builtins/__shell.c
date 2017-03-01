@@ -6,7 +6,7 @@
 /*   By: afeuerst <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/26 16:12:31 by afeuerst          #+#    #+#             */
-/*   Updated: 2017/02/27 15:48:09 by afeuerst         ###   ########.fr       */
+/*   Updated: 2017/03/01 19:31:42 by afeuerst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void			ft_usage_shell(void)
 {
 	write(1, "\e[94musage : shell\n", sizeof("\e[94musage : shell\n"));
-	wwrite(1, "-- restrict\n-- unrestrict\n-- reload\n")
+	WWRITE(1, "-- restrict\n-- unrestrict\n-- reload\n")
 	write(1, "\e[37m", sizeof("\e[37m"));
 }
 
@@ -23,7 +23,7 @@ static void			ft_restrict(void)
 {
 	extern t_info	g_info;
 
-	wwrite(1, "\e[91menter in \e[31mrestrict mode\n\e[37m")
+	WWRITE(1, "\e[91menter in \e[31mrestrict mode\n\e[37m")
 	g_info.restricted = 1;
 }
 
@@ -32,7 +32,7 @@ static void			ft_unrestrict(void)
 	extern t_info	g_info;
 
 	g_info.restricted = 0;
-	wwrite(1, "\e[32mexiting \e[92mrestrict mode\n\e[37m")
+	WWRITE(1, "\e[32mexiting \e[92mrestrict mode\n\e[37m")
 }
 
 static void			ft_reload(void)

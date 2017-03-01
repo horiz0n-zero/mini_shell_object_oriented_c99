@@ -6,13 +6,13 @@
 /*   By: afeuerst <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/26 18:57:08 by afeuerst          #+#    #+#             */
-/*   Updated: 2017/02/27 15:34:29 by afeuerst         ###   ########.fr       */
+/*   Updated: 2017/03/01 19:35:15 by afeuerst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-void		ft_create_env(void)
+void			ft_create_env(void)
 {
 	extern char	**environ;
 	char		**ptr;
@@ -29,11 +29,11 @@ void		ft_create_env(void)
 	*ptr = NULL;
 }
 
-size_t ft_env_count(void)
+size_t			ft_env_count(void)
 {
-	extern char **environ;
-	char        **ptr;
-	size_t      count;
+	extern char	**environ;
+	char		**ptr;
+	size_t		count;
 
 	count = 1;
 	ptr = environ;
@@ -45,10 +45,10 @@ size_t ft_env_count(void)
 	return (count);
 }
 
-static char *ft_env_fill_key(const char *src)
+static char		*ft_env_fill_key(const char *src)
 {
-	char			*ptr;
-	char			*str;
+	char		*ptr;
+	char		*str;
 
 	ptr = malloc(sizeof(char) * (ft_strlen(src) + 1));
 	str = ptr;
@@ -58,12 +58,12 @@ static char *ft_env_fill_key(const char *src)
 	return (str);
 }
 
-static void ft_env_copy(void)
+static void		ft_env_copy(void)
 {
-	extern char **environ;
-	char 				**env;
-	char 				**ptr;
-	char				**new;
+	extern char	**environ;
+	char		**env;
+	char		**ptr;
+	char		**new;
 
 	ptr = (char**)malloc(sizeof(char*) * ft_env_count());
 	new = ptr;

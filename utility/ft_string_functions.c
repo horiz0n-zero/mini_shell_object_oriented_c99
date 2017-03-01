@@ -6,7 +6,7 @@
 /*   By: afeuerst <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/25 16:11:52 by afeuerst          #+#    #+#             */
-/*   Updated: 2017/02/27 13:20:26 by afeuerst         ###   ########.fr       */
+/*   Updated: 2017/03/01 14:28:51 by afeuerst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ char			*ft_copy(const char *str)
 	char		*ptr;
 	char		*s;
 
+	if (str == NULL)
+		return (NULL);
 	s = malloc(ft_strlen(str) + 1);
 	ptr = s;
 	while (*str)

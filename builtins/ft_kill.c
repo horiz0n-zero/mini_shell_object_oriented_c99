@@ -6,7 +6,7 @@
 /*   By: afeuerst <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/28 14:00:33 by afeuerst          #+#    #+#             */
-/*   Updated: 2017/02/28 14:22:29 by afeuerst         ###   ########.fr       */
+/*   Updated: 2017/03/01 19:32:51 by afeuerst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static pid_t	ft_arg_to_pid(const char *cmd)
 
 static void		ft_usage(void)
 {
-	wwrite(1, "\e[34musage : kill [optional SIGNAL] [PID]\n\e[37m")
+	WWRITE(1, "\e[34musage : kill [optional SIGNAL] [PID]\n\e[37m")
 }
 
 void			ft_kill(const t_cmd * const cmd)

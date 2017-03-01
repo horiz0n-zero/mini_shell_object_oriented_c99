@@ -6,7 +6,7 @@
 /*   By: afeuerst <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/28 13:46:50 by afeuerst          #+#    #+#             */
-/*   Updated: 2017/02/28 15:38:36 by afeuerst         ###   ########.fr       */
+/*   Updated: 2017/03/01 19:38:36 by afeuerst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void ft_init_termcaps(void)
 	current_term = ft_env_for_key("TERM");
 	if (current_term == NULL)
 	{
-		wwrite(1, "impossible d'init les termcaps, term not found\n")
+		WWRITE(1, "impossible d'init les termcaps, term not found\n")
 			return ;
 	}
 	(void)term;
